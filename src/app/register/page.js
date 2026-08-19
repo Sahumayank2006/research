@@ -82,6 +82,26 @@ export default function RegisterPage() {
     try {
       const user = await ensureAnonymousAuth();
       const res = await saveRegistration(data, user.uid);
+      
+      // Trigger confirmation email
+      try {
+        await fetch('/api/send-registration-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: data.email,
+            fullName: data.fullName,
+            registrationId: res.registrationId,
+            participantCategory: data.participantCategory,
+            trackPreference: data.trackPreference,
+            participationType: data.participationType
+          })
+        });
+      } catch (emailError) {
+        console.error('Failed to send confirmation email:', emailError);
+        // We don't fail the registration if the email fails
+      }
+
       setResult(res);
       setStep(4);
     } catch (err) {
