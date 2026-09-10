@@ -1,39 +1,52 @@
-import Header from '@/components/Header';
+import Navbar from '@/components/Navbar';
+import Ticker from '@/components/Ticker';
+import Reveal from '@/components/Reveal';
+import BackToTop from '@/components/BackToTop';
 import Footer from '@/components/Footer';
+
 import HeroSection from '@/components/sections/HeroSection';
+import SponsorsSection from '@/components/sections/SponsorsSection';
 import AboutSection from '@/components/sections/AboutSection';
 import WhySection from '@/components/sections/WhySection';
 import TracksSection from '@/components/sections/TracksSection';
 import FormatSection from '@/components/sections/FormatSection';
-import TimelineSection from '@/components/sections/TimelineSection';
-import SpeakersSection from '@/components/sections/SpeakersSection';
+import EvaluationSection from '@/components/sections/EvaluationSection';
+import AwardsSection from '@/components/sections/AwardsSection';
 import CommitteeSection from '@/components/sections/CommitteeSection';
-import PrizesSection from '@/components/sections/PrizesSection';
 import RegistrationSection from '@/components/sections/RegistrationSection';
 import VenueSection from '@/components/sections/VenueSection';
-import PartnersSection from '@/components/sections/PartnersSection';
 import FaqSection from '@/components/sections/FaqSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <a href="#about" className="skip">Skip to content</a>
+
+      <div className="nav-wrap">
+        <Navbar />
+        <Ticker />
+      </div>
+
       <main>
         <HeroSection />
+        <SponsorsSection />
         <AboutSection />
         <WhySection />
         <TracksSection />
         <FormatSection />
-        <TimelineSection />
-        <SpeakersSection />
+        <EvaluationSection />
+        <AwardsSection />
         <CommitteeSection />
-        <PrizesSection />
         <RegistrationSection />
         <VenueSection />
-        <PartnersSection />
         <FaqSection />
+        <ContactSection />
       </main>
+
       <Footer />
+      <BackToTop />
+      <Reveal />
     </>
   );
 }

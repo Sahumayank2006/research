@@ -1,43 +1,73 @@
-import { Playfair_Display, Inter, IBM_Plex_Mono } from 'next/font/google';
+import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import './sections.css';
+import { EVENT } from '@/lib/config';
 
-const playfair = Playfair_Display({
+const display = Fraunces({
   variable: '--font-display',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
-const inter = Inter({
+const body = Inter({
   variable: '--font-body',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const mono = JetBrains_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
   display: 'swap',
 });
 
+const title = `${EVENT.name} ${EVENT.year} — ${EVENT.tagline}`;
+const description = `${EVENT.dateLabel} · ${EVENT.location}. A three-day research sprint by ASET, Amity University Madhya Pradesh, in association with IEEE MP Section. Draft a submission-ready IEEE manuscript in 48 hours. Amity students ₹200.`;
+
 export const metadata = {
-  title: 'Research-O-Thon 2025 — Transform Ideas into Research Publications in 48 Hours',
-  description: 'A 48-hour IEEE co-sponsored research-paper drafting sprint organized by ASET, Amity University Madhya Pradesh. Register for ₹300 — includes mentorship, meals, and certification.',
-  keywords: 'Research-O-Thon, research hackathon, IEEE, Amity University, academic research, manuscript drafting, Gwalior, 2025',
+  title: {
+    default: title,
+    template: `%s · ${EVENT.name} ${EVENT.year}`,
+  },
+  description,
+  keywords: [
+    'Research-O-Thon 2026',
+    'research hackathon',
+    'IEEE MP Section',
+    'Amity University Madhya Pradesh',
+    'ASET Gwalior',
+    'IEEE paper writing',
+    'manuscript sprint',
+    'Gwalior research event',
+  ],
+  authors: [{ name: 'Amity School of Engineering and Technology, AUMP' }],
   openGraph: {
-    title: 'Research-O-Thon 2025 — 48-Hour Research Sprint',
-    description: 'Transform your research idea into a structured manuscript draft in 48 hours. IEEE co-sponsored. ₹300 all-inclusive.',
+    title,
+    description,
     type: 'website',
     locale: 'en_IN',
+    siteName: `${EVENT.name} ${EVENT.year}`,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport = {
+  themeColor: '#08172b',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

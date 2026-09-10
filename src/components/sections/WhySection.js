@@ -1,28 +1,39 @@
-'use client';
-
-import ScrollReveal, { ScrollRevealGroup } from '@/components/ScrollReveal';
-import { EVENT_CONFIG } from '@/lib/config';
+import { PILLARS } from '@/lib/config';
 
 export default function WhySection() {
   return (
-    <section className="section" id="why">
-      <div className="container">
-        <ScrollReveal>
-          <div className="section-heading">
-            <span className="eyebrow">Why Research-O-Thon</span>
-            <h2>What Sets This Apart</h2>
+    <section className="band band--ink why grain" id="why">
+      <div className="shell">
+        <div className="sec-head sec-head--split">
+          <div className="sec-head__meta" data-reveal>
+            <span className="kicker">02 — Why It Is Different</span>
+            <h2 className="sec-head__title" style={{ marginTop: '1.15rem' }}>
+              Most events hand you a certificate.
+              <br />
+              <span className="why__accent">This one hands you a paper.</span>
+            </h2>
           </div>
-        </ScrollReveal>
+          <p className="lede" data-reveal style={{ '--reveal-delay': '120ms' }}>
+            Six things that change what you walk out with — each one built into the
+            schedule rather than left to chance.
+          </p>
+        </div>
 
-        <ScrollRevealGroup className="why__grid grid--3" staggerMs={100}>
-          {EVENT_CONFIG.differentiators.map((item, i) => (
-            <div key={i} className="why__card hairline-card">
-              <span className="clause-number">{String(i + 1).padStart(2, '0')} —</span>
-              <h3 className="why__card-title">{item.title}</h3>
-              <p className="why__card-desc">{item.description}</p>
-            </div>
+        <ol className="pillars">
+          {PILLARS.map((pillar, i) => (
+            <li
+              className="pillar"
+              key={pillar.n}
+              data-reveal
+              style={{ '--reveal-delay': `${(i % 3) * 110}ms` }}
+            >
+              <span className="pillar__n" aria-hidden="true">{pillar.n}</span>
+              <h3 className="pillar__title">{pillar.title}</h3>
+              <p className="pillar__body">{pillar.body}</p>
+              <span className="pillar__glow" aria-hidden="true" />
+            </li>
           ))}
-        </ScrollRevealGroup>
+        </ol>
       </div>
     </section>
   );

@@ -1,82 +1,113 @@
-'use client';
+import { COMMITTEE } from '@/lib/config';
 
-import ScrollReveal, { ScrollRevealGroup } from '@/components/ScrollReveal';
-import SealAnimation from '@/components/SealAnimation';
-import { EVENT_CONFIG } from '@/lib/config';
+function initials(name) {
+  return name
+    .replace(/^(Dr\.|Mr\.|Ms\.|Mrs\.|Prof\.)\s*/i, '')
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('');
+}
+
+function Patron({ person, chief = false }) {
+  return (
+    <article className={`patron ${chief ? 'patron--chief' : ''}`}>
+      <span className="patron__role">{person.role}</span>
+      <h3 className="patron__name">{person.name}</h3>
+      <ul className="patron__titles">
+        {person.titles.map((t) => (
+          <li key={t}>{t}</li>
+        ))}
+      </ul>
+    </article>
+  );
+}
 
 export default function CommitteeSection() {
-  const { committee } = EVENT_CONFIG;
+  const chief = COMMITTEE.patrons.filter((p) => p.tier === 1);
+  const seconds = COMMITTEE.patrons.filter((p) => p.tier === 2);
 
   return (
-    <section className="section" id="committee">
-      <div className="container">
-        <ScrollReveal>
-          <div className="section-heading">
-            <span className="eyebrow">Organizing Authority</span>
-            <h2>Committee &amp; Governance</h2>
+    <section className="band band--tint committee" id="committee">
+      <div className="shell">
+        <div className="sec-head sec-head--split">
+          <div className="sec-head__meta" data-reveal>
+            <span className="kicker">07 — Organizing Committee</span>
+            <h2 className="sec-head__title" style={{ marginTop: '1.15rem' }}>
+              The people running the <span className="serif-em">sprint.</span>
+            </h2>
           </div>
-        </ScrollReveal>
+          <p className="lede" data-reveal style={{ '--reveal-delay': '120ms' }}>
+            Faculty from across Amity School of Engineering and Technology, working
+            with the IEEE Student Chapter, ASET, Amity University Madhya Pradesh.
+          </p>
+        </div>
 
-        <div className="committee__layout">
-          <div className="committee__main">
-            {/* Chief Patron */}
-            <ScrollReveal delay={100}>
-              <div className="committee__block certificate-card">
-                <span className="eyebrow eyebrow--navy">{committee.patron.title}</span>
-                <h3>{committee.patron.name}</h3>
-                <p>{committee.patron.designation}</p>
-              </div>
-            </ScrollReveal>
+        {/* ---- patronage ---- */}
+        <div className="patronage" data-reveal>
+          <span className="patronage__label">Under the Patronage of</span>
 
-            {/* Organizing Chair */}
-            <ScrollReveal delay={200}>
-              <div className="committee__block certificate-card">
-                <span className="eyebrow eyebrow--navy">{committee.chair.title}</span>
-                <h3>{committee.chair.name}</h3>
-                <p>{committee.chair.designation}</p>
-              </div>
-            </ScrollReveal>
+          {chief.map((p) => (
+            <Patron key={p.name} person={p} chief />
+          ))}
 
-            {/* IEEE Co-Sponsorship Notice */}
-            <ScrollReveal delay={300}>
-              <div className="committee__ieee-notice">
-                <span className="eyebrow">IEEE Co-Sponsorship Notice</span>
-                <p>{committee.ieeeNotice}</p>
-              </div>
-            </ScrollReveal>
-
-            {/* Committee Grid */}
-            <ScrollReveal delay={400}>
-              <h3 style={{ marginBottom: 'var(--space-6)', marginTop: 'var(--space-8)' }}>
-                Organizing Committee
-              </h3>
-              <div className="committee__roster">
-                <table className="committee__table">
-                  <thead>
-                    <tr>
-                      <th>Role</th>
-                      <th>Name</th>
-                      <th>Affiliation</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {committee.members.map((member, i) => (
-                      <tr key={i}>
-                        <td className="committee__role">{member.role}</td>
-                        <td>{member.name}</td>
-                        <td>{member.affiliation}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </ScrollReveal>
+          <div className="patronage__pair">
+            {seconds.map((p) => (
+              <Patron key={p.name} person={p} />
+            ))}
           </div>
+        </div>
 
-          {/* Seal */}
-          <div className="committee__seal">
-            <SealAnimation />
-          </div>
+        {/* ---- leadership ---- */}
+        <div className="leads">
+          {COMMITTEE.leadership.map((person, i) => (
+            <article
+              className="lead"
+              key={person.name}
+              data-reveal
+              style={{ '--reveal-delay': `${i * 110}ms` }}
+            >
+              <span className="lead__monogram" aria-hidden="true">
+                {initials(person.name)}
+              </span>
+              <span className="lead__role">{person.role}</span>
+              <h3 className="lead__name">{person.name}</h3>
+              <p className="lead__detail">{person.detail}</p>
+            </article>
+          ))}
+        </div>
+
+        {/* ---- committees ---- */}
+        <div className="cgroups">
+          {COMMITTEE.groups.map((group, i) => (
+            <section
+              className={`cgroup ${group.note ? 'cgroup--students' : ''}`}
+              key={group.title}
+              data-reveal
+              style={{ '--reveal-delay': `${(i % 3) * 90}ms` }}
+            >
+              <header className="cgroup__head">
+                <div>
+                  <h3 className="cgroup__title">{group.title}</h3>
+                  {group.subtitle && (
+                    <p className="cgroup__subtitle">{group.subtitle}</p>
+                  )}
+                </div>
+                <span className="cgroup__count">
+                  {String(group.members.length).padStart(2, '0')}
+                </span>
+              </header>
+              {group.note && <p className="cgroup__note">{group.note}</p>}
+
+              <ul className="cgroup__list">
+                {group.members.map((member) => (
+                  <li className="cgroup__member" key={member}>
+                    {member}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
         </div>
       </div>
     </section>

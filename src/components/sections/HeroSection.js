@@ -1,78 +1,97 @@
-'use client';
-
-import Link from 'next/link';
-import CountdownTimer from '@/components/CountdownTimer';
-import ScrollReveal from '@/components/ScrollReveal';
-import { EVENT_CONFIG } from '@/lib/config';
+import Image from 'next/image';
+import Countdown from '@/components/Countdown';
+import { EVENT } from '@/lib/config';
+import { IconPin, IconCalendar } from '@/components/Icons';
 
 export default function HeroSection() {
   return (
-    <section className="hero section" id="hero">
-      {/* Background watermark */}
-      <div className="hero__watermark" aria-hidden="true">
-        <svg width="400" height="400" viewBox="0 0 400 400" fill="none" opacity="0.03">
-          <circle cx="200" cy="200" r="180" stroke="#0A1F44" strokeWidth="2" />
-          <circle cx="200" cy="200" r="150" stroke="#0A1F44" strokeWidth="1" />
-          <circle cx="200" cy="200" r="120" stroke="#0A1F44" strokeWidth="0.5" />
-          <path d="M100 200 Q150 100 200 130 Q250 100 300 200 Q270 280 240 300 Q220 340 200 360 Q180 340 160 300 Q130 280 100 200Z" stroke="#0A1F44" strokeWidth="1.5" fill="none" />
-        </svg>
+    <section className="hero" id="top">
+      {/* ---- backdrop ---- */}
+      <div className="hero__bg" aria-hidden="true">
+        <Image
+          src="/aump.jpg"
+          alt=""
+          fill
+          preload
+          quality={88}
+          sizes="100vw"
+          className="hero__img"
+        />
+        <div className="hero__scrim" />
+        <div className="hero__grid" />
+        <div className="hero__vignette" />
       </div>
 
-      <div className="container">
-        <ScrollReveal>
-          <div className="hero__content">
-            <span className="eyebrow hero__eyebrow">
-              IEEE Madhya Pradesh Section · Technically &amp; Financially Co-Sponsored Event
+      {/* ---- content ---- */}
+      <div className="hero__inner shell shell--wide">
+        <p className="hero__eyebrow">
+          <span className="hero__eyebrow-dot" aria-hidden="true" />
+          Amity School of Engineering &amp; Technology
+          <span className="hero__eyebrow-sep" aria-hidden="true">/</span>
+          In association with IEEE MP Section
+        </p>
+
+        <h1 className="hero__title">
+          <span className="hero__line">
+            <span className="hero__word">Research-O-Thon</span>
+          </span>
+          <span className="hero__line hero__line--year">
+            <span className="hero__year">{EVENT.year}</span>
+            <span className="hero__year-tag">
+              48-Hour
+              <br />
+              Research Sprint
             </span>
-            
-            <h1 className="hero__headline">
-              Transform Ideas into Research Publications — <em>in 48 Hours.</em>
-            </h1>
-            
-            <p className="hero__subtitle">
-              {EVENT_CONFIG.subtitle}
-            </p>
+          </span>
+        </h1>
 
-            <div className="hero__countdown">
-              <span className="eyebrow eyebrow--navy" style={{ marginBottom: '0.75rem' }}>
-                Event Begins In
-              </span>
-              <CountdownTimer targetDate={EVENT_CONFIG.startDate} />
-            </div>
+        <ul className="hero__meta">
+          <li className="hero__meta-item">
+            <IconPin className="hero__meta-icon" />
+            <span>
+              <span className="hero__meta-label">Location</span>
+              Amity University Madhya Pradesh, Gwalior
+            </span>
+          </li>
+          <li className="hero__meta-item">
+            <IconCalendar className="hero__meta-icon" />
+            <span>
+              <span className="hero__meta-label">Date</span>
+              21 to 23 September 2026
+            </span>
+          </li>
+        </ul>
 
-            <div className="hero__actions">
-              <Link href="/register" className="btn btn--primary btn--register btn--lg">
-                Register for ₹300
-              </Link>
-              <a href="#" className="btn btn--secondary btn--lg">
-                Download Official Brochure
-              </a>
-            </div>
-          </div>
-        </ScrollReveal>
+        <p className="hero__lede">{EVENT.subtitle}</p>
+
+        <div className="hero__actions">
+          <a
+            href={EVENT.registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--gold btn--lg"
+          >
+            Register Now
+            <span className="btn__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#format" className="btn btn--ghost-light btn--lg">
+            See the Format
+          </a>
+        </div>
       </div>
 
-      {/* Trust strip */}
-      <div className="hero__trust-strip">
-        <div className="container">
-          <div className="hero__trust-items">
-            <div className="hero__trust-item">
-              <span className="hero__trust-icon">◆</span>
-              <span>Co-Sponsored by IEEE MP Section</span>
-            </div>
-            <div className="hero__trust-item">
-              <span className="hero__trust-icon">◆</span>
-              <span>Hosted by ASET, Amity University MP</span>
-            </div>
-            <div className="hero__trust-item">
-              <span className="hero__trust-icon">◆</span>
-              <span>48 Hrs Format</span>
-            </div>
-            <div className="hero__trust-item">
-              <span className="hero__trust-icon">◆</span>
-              <span>IEEE Xplore Eligible Proceedings*</span>
-            </div>
+      {/* ---- foot rail ---- */}
+      <div className="hero__rail">
+        <div className="shell shell--wide hero__rail-inner">
+          <div className="hero__countdown">
+            <span className="hero__rail-label">Sprint begins in</span>
+            <Countdown iso={EVENT.startISO} />
           </div>
+
+          <a href="#about" className="hero__cue" aria-label="Scroll to content">
+            <span className="hero__cue-text">Scroll</span>
+            <span className="hero__cue-line" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>

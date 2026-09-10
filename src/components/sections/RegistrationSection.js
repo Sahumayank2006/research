@@ -1,58 +1,86 @@
-'use client';
-
-import Link from 'next/link';
-import ScrollReveal from '@/components/ScrollReveal';
-import { EVENT_CONFIG } from '@/lib/config';
+import { EVENT, FEES, INCLUSIONS } from '@/lib/config';
+import { IconCheck, IconCalendar, IconPin, IconUsers } from '@/components/Icons';
 
 export default function RegistrationSection() {
   return (
-    <section className="section" id="register">
-      <div className="container container--narrow">
-        <ScrollReveal>
-          <div className="section-heading">
-            <span className="eyebrow">Official Entry</span>
-            <h2>Registration &amp; Fees</h2>
+    <section className="band band--ink register grain" id="register">
+      <div className="shell">
+        <div className="sec-head sec-head--center">
+          <span className="kicker" data-reveal>08 — Registration</span>
+          <h2 className="sec-head__title" data-reveal style={{ '--reveal-delay': '80ms' }}>
+            Take the seat. <span className="register__accent">Write the paper.</span>
+          </h2>
+          <p className="lede" data-reveal style={{ '--reveal-delay': '160ms' }}>
+            Registration is handled through the official Google Form. Fill it once
+            for your team, and bring a valid institutional ID to the venue.
+          </p>
+        </div>
+
+        <div className="reg-grid">
+          {/* ---- fees ---- */}
+          <div className="fees">
+            {FEES.map((fee, i) => (
+              <article
+                className={`fee ${fee.featured ? 'fee--featured' : ''}`}
+                key={fee.label}
+                data-reveal
+                style={{ '--reveal-delay': `${i * 120}ms` }}
+              >
+                {fee.featured && <span className="fee__ribbon">Best Value</span>}
+                <span className="fee__label">{fee.label}</span>
+                <span className="fee__amount">{fee.amount}</span>
+                <p className="fee__note">{fee.note}</p>
+              </article>
+            ))}
+
+            <p className="fees__foot" data-reveal>
+              Amity University Madhya Pradesh students pay <strong>₹200 only</strong>.
+              The fee is all-inclusive and non-refundable once confirmed.
+            </p>
           </div>
-        </ScrollReveal>
 
-        <ScrollReveal delay={100}>
-          <div className="reg-card">
-            <div className="reg-card__header">
-              <div className="reg-card__badge">
-                <span className="eyebrow" style={{ marginBottom: 0, color: 'var(--parchment)' }}>All Categories</span>
-              </div>
-              <div className="reg-card__fee">
-                <span className="reg-card__currency">₹</span>
-                <span className="reg-card__amount mono">300</span>
-              </div>
-              <p className="reg-card__note">
-                Students · IEEE Members · Professionals · Industry Participants<br />
-                <em>One inclusive fee — a deliberate accessibility choice.</em>
-              </p>
+          {/* ---- inclusions + CTA ---- */}
+          <div className="reg-panel" data-reveal data-reveal-from="right">
+            <span className="reg-panel__label">What the fee covers</span>
+            <ul className="reg-panel__list">
+              {INCLUSIONS.map((item) => (
+                <li key={item}>
+                  <IconCheck width={16} height={16} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="reg-panel__facts">
+              <span>
+                <IconCalendar width={16} height={16} />
+                {EVENT.dateLabel}
+              </span>
+              <span>
+                <IconPin width={16} height={16} />
+                {EVENT.locationShort}
+              </span>
+              <span>
+                <IconUsers width={16} height={16} />
+                Teams of 1–4
+              </span>
             </div>
 
-            <div className="reg-card__body">
-              <h4 className="reg-card__includes-title">What&apos;s Included</h4>
-              <ul className="reg-card__includes">
-                {EVENT_CONFIG.inclusions.map((item, i) => (
-                  <li key={i} className="reg-card__include-item">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                      <circle cx="9" cy="9" r="8" stroke="#1F7A4D" strokeWidth="1" fill="none" />
-                      <path d="M5 9L8 12L13 6" stroke="#1F7A4D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="reg-card__footer">
-              <Link href="/register" className="btn btn--gold btn--lg" style={{ width: '100%' }}>
-                Register Now — ₹300
-              </Link>
-            </div>
+            <a
+              href={EVENT.registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--gold btn--lg btn--block reg-panel__cta"
+            >
+              Register on the Official Form
+              <span className="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <p className="reg-panel__fineprint">
+              Opens the Google Form in a new tab. Queries:{' '}
+              <a href={`mailto:${EVENT.email}`}>{EVENT.email}</a>
+            </p>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

@@ -1,59 +1,63 @@
-'use client';
-
-import ScrollReveal from '@/components/ScrollReveal';
-import { EVENT_CONFIG } from '@/lib/config';
+import Image from 'next/image';
+import { VENUE, EVENT } from '@/lib/config';
+import { IconPin, IconArrow } from '@/components/Icons';
 
 export default function VenueSection() {
-  const { venue } = EVENT_CONFIG;
-
   return (
-    <section className="section section--warm" id="venue">
-      <div className="container">
-        <ScrollReveal>
-          <div className="section-heading">
-            <span className="eyebrow">Venue Notification</span>
-            <h2>Venue &amp; Travel</h2>
+    <section className="band venue" id="venue">
+      <div className="shell">
+        <div className="venue__grid">
+          <div className="venue__media" data-reveal data-reveal-from="left">
+            <Image
+              src="/aump.jpg"
+              alt="Amity University Madhya Pradesh campus, Gwalior"
+              width={1200}
+              height={900}
+              className="venue__img"
+              sizes="(max-width: 900px) 92vw, 46vw"
+            />
+            <span className="venue__plate">
+              <IconPin width={16} height={16} />
+              {VENUE.campus}
+            </span>
           </div>
-        </ScrollReveal>
 
-        <div className="venue__layout">
-          <ScrollReveal delay={100} className="venue__map-wrap">
-            <div className="venue__map">
-              <iframe
-                src={venue.mapEmbedUrl}
-                width="100%"
-                height="350"
-                style={{ border: 0, borderRadius: 'var(--radius-md)' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Event venue map"
-              ></iframe>
-            </div>
-          </ScrollReveal>
+          <div className="venue__copy" data-reveal data-reveal-from="right">
+            <span className="kicker">09 — Venue</span>
+            <h2 className="venue__title">
+              Gwalior. Three kilometres <span className="serif-em">from the runway.</span>
+            </h2>
+            <p className="venue__address">
+              {VENUE.school}
+              <br />
+              {VENUE.address}
+            </p>
 
-          <ScrollReveal delay={200} className="venue__info">
-            <div className="certificate-card">
-              <span className="eyebrow eyebrow--navy">Official Venue</span>
-              <h3>{venue.name}</h3>
-              <p>
-                <strong>{venue.institution}</strong><br />
-                {venue.university}<br />
-                {venue.address}
-              </p>
-
-              <hr className="gold-rule" style={{ margin: 'var(--space-6) 0' }} />
-
-              <h4 style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-4)' }}>
-                How to Reach
-              </h4>
-              {venue.travelNotes.map((note, i) => (
-                <div key={i} className="venue__travel-item">
-                  <strong>{note.mode}:</strong> {note.detail}
-                </div>
+            <ul className="venue__travel">
+              {VENUE.travel.map((t) => (
+                <li key={t.mode}>
+                  <span className="venue__mode">{t.mode}</span>
+                  <span className="venue__detail">{t.detail}</span>
+                </li>
               ))}
+            </ul>
+
+            <div className="venue__actions">
+              <a
+                href={VENUE.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--ghost"
+              >
+                Open in Maps
+                <span className="btn__arrow" aria-hidden="true">→</span>
+              </a>
+              <a href="#register" className="tlink">
+                Register for {EVENT.dateShort}
+                <IconArrow width={15} height={15} />
+              </a>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
