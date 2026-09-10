@@ -1,11 +1,19 @@
-import Image from 'next/image';
 import { SPONSOR_LOGOS } from '@/lib/config';
 
+/**
+ * Sponsor / host lockup.
+ *
+ * These are plain <img> tags on purpose. The files are static assets in
+ * public/, so this bypasses the image optimizer entirely — no `fill`, no
+ * positioned-parent requirement, no quality allowlist, nothing that can
+ * fail between the file and the screen. The cells also deliberately carry
+ * no scroll-reveal, so a logo can never be left sitting at zero opacity.
+ */
 export default function SponsorsSection() {
   return (
     <section className="band band--flush-top sponsors" aria-labelledby="sponsors-title">
       <div className="shell shell--wide">
-        <div className="sponsors__head" data-reveal>
+        <div className="sponsors__head">
           <span className="sponsors__rule" aria-hidden="true" />
           <h2 className="sponsors__title" id="sponsors-title">
             Technical Sponsors <span className="sponsors__amp">&amp;</span> Host Institution
@@ -14,26 +22,16 @@ export default function SponsorsSection() {
         </div>
 
         <ul className="sponsors__row">
-          {SPONSOR_LOGOS.map((logo, i) => (
-            <li
-              className="sponsors__cell"
-              key={logo.src}
-              data-reveal
-              data-reveal-from="scale"
-              style={{ '--reveal-delay': `${i * 90}ms` }}
-            >
+          {SPONSOR_LOGOS.map((logo) => (
+            <li className="sponsors__cell" key={logo.src}>
               <div className="sponsors__plate">
-                {/* `fill` + object-fit lets each logo keep its own aspect ratio
-                    inside a shared plate, whatever the source file's shape is. */}
-                <span className="sponsors__frame">
-                  <Image
-                    src={logo.src}
-                    alt={logo.name}
-                    fill
-                    className="sponsors__logo"
-                    sizes="(max-width: 430px) 45vw, (max-width: 720px) 30vw, 240px"
-                  />
-                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="sponsors__logo"
+                  decoding="async"
+                />
               </div>
               <span className="sponsors__name">{logo.name}</span>
             </li>
