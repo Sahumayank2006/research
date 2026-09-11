@@ -1,26 +1,6 @@
 import Image from 'next/image';
 
 export default function ChiefGuestSection() {
-  const credentials = [
-    {
-      icon: 'mortarboard',
-      label: 'Academic Excellence & Doctorate',
-      detail: 'Ph.D., School of Computing — University of Kent, United Kingdom',
-    },
-    {
-      icon: 'globe',
-      label: 'Postdoctoral Innovation',
-      detail:
-        'Post-Doctoral Fellowship — Advanced Future Computing & Systems Architecture',
-    },
-    {
-      icon: 'star',
-      label: 'International IEEE Leadership',
-      detail:
-        'Distinguished IEEE Section Chair & Global Flagship Conference Director',
-    },
-  ];
-
   return (
     <section className="band band--ink chief-guest" id="chief-guest">
       <div className="shell">
@@ -82,36 +62,6 @@ export default function ChiefGuestSection() {
               breakthroughs into transformative, high-impact societal solutions
               worldwide.
             </p>
-
-            <div className="cg__credentials">
-              {credentials.map((c) => (
-                <div className="cg__cred" key={c.label}>
-                  <span className="cg__cred-icon" aria-hidden="true">
-                    {c.icon === 'mortarboard' && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                        <path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5" />
-                      </svg>
-                    )}
-                    {c.icon === 'globe' && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z" />
-                      </svg>
-                    )}
-                    {c.icon === 'star' && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                      </svg>
-                    )}
-                  </span>
-                  <div>
-                    <span className="cg__cred-label">{c.label}</span>
-                    <p className="cg__cred-detail">{c.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
 
             <a
               href="https://mirlabs.in/team.html"
