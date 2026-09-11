@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 
 import HeroSection from '@/components/sections/HeroSection';
 import SponsorsSection from '@/components/sections/SponsorsSection';
+import ChiefGuestSection from '@/components/sections/ChiefGuestSection';
 import AboutSection from '@/components/sections/AboutSection';
 import WhySection from '@/components/sections/WhySection';
 import TracksSection from '@/components/sections/TracksSection';
@@ -31,6 +32,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <SponsorsSection />
+        <ChiefGuestSection />
         <AboutSection />
         <WhySection />
         <TracksSection />

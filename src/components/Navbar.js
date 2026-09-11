@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { EVENT, NAV } from '@/lib/config';
-import Crest from '@/components/Crest';
 
 export default function Navbar() {
   const [solid, setSolid] = useState(false);
@@ -64,7 +64,13 @@ export default function Navbar() {
         <div className="nav__inner shell shell--wide">
           <a href="#top" className="brand" aria-label={`${EVENT.name} ${EVENT.year} — home`}>
             <span className="brand__mark" aria-hidden="true">
-              <Crest />
+              <Image
+                src="/logo.jpg"
+                alt="Amity University"
+                width={42}
+                height={42}
+                className="brand__logo-img"
+              />
             </span>
             <span className="brand__text">
               <span className="brand__name">

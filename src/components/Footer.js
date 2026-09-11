@@ -1,4 +1,4 @@
-import Crest from '@/components/Crest';
+import Image from 'next/image';
 import { EVENT, NAV, VENUE } from '@/lib/config';
 
 export default function Footer() {
@@ -10,7 +10,13 @@ export default function Footer() {
         <div className="foot__grid">
           <div>
             <span className="brand__mark foot__crest" aria-hidden="true">
-              <Crest />
+              <Image
+                src="/logo.jpg"
+                alt="Amity University"
+                width={42}
+                height={42}
+                className="brand__logo-img"
+              />
             </span>
             <p className="foot__lockup">
               Research-O-Thon <em>{EVENT.year}</em>

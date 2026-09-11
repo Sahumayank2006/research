@@ -57,7 +57,7 @@ export default function HeroSection() {
             <IconCalendar className="hero__meta-icon" />
             <span>
               <span className="hero__meta-label">Date</span>
-              21 to 23 September 2026
+              13 to 15 October 2026
             </span>
           </li>
         </ul>

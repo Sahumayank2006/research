@@ -17,9 +17,9 @@ export const EVENT = {
 
   location: 'Amity University Madhya Pradesh, Gwalior',
   locationShort: 'AUMP, Gwalior',
-  dateLabel: '21 – 23 September 2026',
-  dateShort: '21–23 Sep 2026',
-  startISO: '2026-09-21T09:00:00+05:30',
+  dateLabel: '13 – 15 October 2026',
+  dateShort: '13–15 Oct 2026',
+  startISO: '2026-10-13T09:00:00+05:30',
 
   registerUrl:
     'https://docs.google.com/forms/d/e/1FAIpQLSchuKNbOQUCnhj-ydam1_olMUBqyZJ9VOr7nhdBK2eSPGHYiw/viewform?usp=publish-editor',
@@ -30,7 +30,7 @@ export const EVENT = {
 // --- Marquee ticker items (below the navbar) ------------------
 export const MARQUEE = [
   'Registrations Open',
-  '21 – 23 September 2026',
+  '13 – 15 October 2026',
   'Amity University Madhya Pradesh, Gwalior',
   'Amity Students — ₹200 Only',
   'Teams of 1 to 4',
@@ -317,7 +317,6 @@ export const INCLUSIONS = [
   'Registration kit & IEEE-format starter template',
   'Mentor access through both drafting nights',
   'Prototyping bench & dataset access',
-  'Working lunch, breakfast and refreshments',
   'Plagiarism screening on your final draft',
   'Certificate of participation',
   'Eligibility for all awards',
@@ -325,11 +324,17 @@ export const INCLUSIONS = [
 
 // --- Committee (order as per the official organising list) ----
 export const COMMITTEE = {
-  // Tier 1 sits alone at the top of the crest; tier 2 sits side by side beneath it.
+  // Tier 1 sits side by side at the top of the crest; tier 2 sits side by side beneath it.
   patrons: [
     {
       tier: 1,
       role: 'Chief Patron',
+      name: 'Dr. Aseem Chauhan',
+      titles: ['Chairman, Amity University, Madhya Pradesh'],
+    },
+    {
+      tier: 1,
+      role: 'Patron',
       name: 'Lt. Gen. V. K. Sharma, AVSM (Retd.)',
       titles: [
         'Pro Chancellor, Amity University Madhya Pradesh',
@@ -351,7 +356,7 @@ export const COMMITTEE = {
   ],
   leadership: [
     {
-      name: 'Dr. Alok Jain',
+      name: 'Dr. Alok Aggarwal',
       role: 'Organizing Secretary',
       detail: 'Director, ASET',
     },
