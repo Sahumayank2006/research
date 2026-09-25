@@ -34,7 +34,7 @@ export const MARQUEE = [
   'Registrations Open',
   '13 – 15 October 2026',
   'Amity University Madhya Pradesh, Gwalior',
-  'Amity Students — ₹200 Only',
+  'Amity Students — ₹200 for the Entire Team',
   'Teams of 1 to 4',
   '₹12,500 in Cash Prizes',
   'Faculty Member Can Join Your Team',
@@ -329,13 +329,15 @@ export const FEES = [
   {
     label: 'Amity Students',
     amount: '₹200',
-    note: 'Amity University Madhya Pradesh students, on valid student ID.',
+    perTeam: true,
+    note: 'Per team — covers your entire team, regardless of size. Valid Amity student ID required.',
     featured: true,
   },
   {
     label: 'External Participants',
     amount: '₹300',
-    note: 'Students, research scholars and professionals from other institutions.',
+    perTeam: true,
+    note: 'Per team — for students, scholars and professionals from other institutions.',
     featured: false,
   },
 ];
@@ -492,7 +494,7 @@ export const FAQ = [
   },
   {
     q: 'What exactly is the registration fee?',
-    a: 'Amity University Madhya Pradesh students pay ₹200 only, on presentation of a valid student ID. Participants from other institutions pay ₹300. The fee is all-inclusive of the kit, meals, mentorship and certification.',
+    a: 'The registration fee is ₹200 per team for Amity University Madhya Pradesh students — that means your entire team of up to 4 members pays just ₹200 in total, not per person. External participants pay ₹300 per team. The fee is all-inclusive: kit, meals, mentorship, plagiarism screening, and certification.',
   },
   {
     q: 'How is formatting and plagiarism actually scored?',

@@ -3798,6 +3798,133 @@
 /* ============================================================
    REGISTRATION
    ============================================================ */
+
+/* ── Per-team callout banner ─────────────────────────────── */
+.reg-team-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 900px;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.1rem, 2.5vw, 1.6rem) clamp(1.25rem, 3vw, 2rem);
+  border-radius: 16px;
+  background: linear-gradient(
+    130deg,
+    rgba(232, 200, 124, 0.22) 0%,
+    rgba(184, 134, 43, 0.1) 40%,
+    rgba(232, 200, 124, 0.08) 100%
+  );
+  border: 1.5px solid rgba(232, 200, 124, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(232, 200, 124, 0.08) inset,
+    0 12px 48px rgba(184, 134, 43, 0.2);
+  animation: team-banner-glow 4s ease-in-out infinite;
+}
+
+@keyframes team-banner-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(232,200,124,.08) inset, 0 12px 48px rgba(184,134,43,.2); }
+  50%       { box-shadow: 0 0 0 1px rgba(232,200,124,.08) inset, 0 16px 60px rgba(184,134,43,.35); }
+}
+
+.reg-team-banner__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, #f2d99f, var(--gold));
+  color: #1b1204;
+  box-shadow: 0 8px 24px rgba(184,134,43,0.4);
+}
+
+.reg-team-banner__body {
+  min-width: 0;
+}
+
+.reg-team-banner__headline {
+  display: block;
+  font-family: var(--f-display);
+  font-size: clamp(1.05rem, 0.9rem + 0.65vw, 1.35rem);
+  font-weight: 600;
+  color: var(--gold-bright);
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.reg-team-banner__sub {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--on-ink-soft);
+}
+
+.reg-team-banner__sub em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--on-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(232,200,124,0.5);
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .reg-team-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ── Fee amount row with "per team" badge ─────────────────── */
+.fee__amount-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.fee__amount-wrap .fee__amount {
+  /* reset old standalone display:flex behaviour */
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.fee__per-team-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(232, 200, 124, 0.18);
+  border: 1px solid rgba(232, 200, 124, 0.45);
+  font-family: var(--f-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold-bright);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* ── "Covers the whole team" emphasis line ────────────────── */
+.fee__emphasis {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  line-height: 1.4;
+}
+
+.fee__emphasis svg {
+  flex-shrink: 0;
+  color: var(--gold-bright);
+}
+
+/* ── end registration banner / fee additions ──────────────── */
+
 .reg-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);

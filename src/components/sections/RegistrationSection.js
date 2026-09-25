@@ -17,6 +17,22 @@ export default function RegistrationSection() {
           </p>
         </div>
 
+        {/* ── PER-TEAM CALLOUT BANNER ── */}
+        <div className="reg-team-banner" data-reveal style={{ '--reveal-delay': '200ms' }}>
+          <div className="reg-team-banner__icon">
+            <IconUsers width={28} height={28} />
+          </div>
+          <div className="reg-team-banner__body">
+            <strong className="reg-team-banner__headline">
+              One registration. One payment. Covers your entire team.
+            </strong>
+            <p className="reg-team-banner__sub">
+              The fee below is charged <em>per team</em> — not per person. Whether you
+              register alone or as a group of four, you pay exactly once.
+            </p>
+          </div>
+        </div>
+
         <div className="reg-grid">
           {/* ---- fees ---- */}
           <div className="fees">
@@ -29,7 +45,19 @@ export default function RegistrationSection() {
               >
                 {fee.featured && <span className="fee__ribbon">Best Value</span>}
                 <span className="fee__label">{fee.label}</span>
-                <span className="fee__amount">{fee.amount}</span>
+
+                {/* Amount with per-team badge */}
+                <div className="fee__amount-wrap">
+                  <span className="fee__amount">{fee.amount}</span>
+                  <span className="fee__per-team-badge">per team</span>
+                </div>
+
+                {/* Emphasis line */}
+                <p className="fee__emphasis">
+                  <IconUsers width={13} height={13} />
+                  Covers up to 4 members &mdash; total, not per person
+                </p>
+
                 <p className="fee__note">{fee.note}</p>
               </article>
             ))}
@@ -43,8 +71,9 @@ export default function RegistrationSection() {
             </p>
 
             <p className="fees__foot" data-reveal>
-              Amity University Madhya Pradesh students pay <strong>₹200 only</strong>.
-              The fee is all-inclusive and non-refundable once confirmed.
+              Amity University Madhya Pradesh students pay <strong>₹200 total</strong>&nbsp;—
+              for the <strong>whole team</strong>. The fee is all-inclusive and
+              non-refundable once confirmed.
             </p>
           </div>
 
