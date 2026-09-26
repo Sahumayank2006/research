@@ -22,7 +22,7 @@ const mono = JetBrains_Mono({
 });
 
 const title = `${EVENT.name} ${EVENT.year} — ${EVENT.tagline}`;
-const description = `${EVENT.dateLabel} · ${EVENT.location}. A three-day research sprint by ASET, Amity University Madhya Pradesh, in association with IEEE MP Section. Draft a submission-ready IEEE manuscript in 48 hours. Amity students ₹200.`;
+const description = `${EVENT.dateLabel} · ${EVENT.location}. A three-day research sprint by ASET, Amity University Madhya Pradesh, in association with IEEE MP Section. Draft a submission-ready IEEE manuscript in 48 hours. Registration ₹200 per team for Amity students (not per person).`;
 
 export const metadata = {
   title: {

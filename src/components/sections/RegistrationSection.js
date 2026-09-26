@@ -1,5 +1,5 @@
 import { EVENT, FEES, INCLUSIONS, TEAM_RULE } from '@/lib/config';
-import { IconCheck, IconCalendar, IconPin, IconUsers } from '@/components/Icons';
+import { IconCheck, IconCalendar, IconPin, IconUsers, IconWhatsApp } from '@/components/Icons';
 
 export default function RegistrationSection() {
   return (
@@ -29,6 +29,11 @@ export default function RegistrationSection() {
             <p className="reg-team-banner__sub">
               The fee below is charged <em>per team</em> — not per person. Whether you
               register alone or as a group of four, you pay exactly once.
+            </p>
+
+            <p className="reg-sizes__note">
+              Same fee for any team size: ₹200 for Amity teams, ₹300 for teams from
+              other institutions. It is paid once, for the whole team.
             </p>
           </div>
         </div>
@@ -65,8 +70,7 @@ export default function RegistrationSection() {
             <p className="fees__team" data-reveal>
               <IconUsers width={18} height={18} />
               <span>
-                <strong>{TEAM_RULE.headline}.</strong> The faculty member is counted
-                within the maximum of four members.
+                <strong>{TEAM_RULE.headline}.</strong> {TEAM_RULE.body}
               </span>
             </p>
 
@@ -100,7 +104,7 @@ export default function RegistrationSection() {
               </span>
               <span>
                 <IconUsers width={16} height={16} />
-                Teams of 1–4 · 1 faculty allowed
+                Teams of 1–4 · faculty optional
               </span>
             </div>
 
@@ -113,8 +117,18 @@ export default function RegistrationSection() {
               Register on the Official Page
               <span className="btn__arrow" aria-hidden="true">→</span>
             </a>
+            <a
+              href={EVENT.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--lg btn--block btn--whatsapp"
+            >
+              <IconWhatsApp width={20} height={20} />
+              Join the WhatsApp Group
+            </a>
             <p className="reg-panel__fineprint">
-              Opens amity.edu in a new tab. Queries:{' '}
+              One registration and one payment for the whole team. Opens amity.edu in
+              a new tab. Queries:{' '}
               <a href={`mailto:${EVENT.email}`}>{EVENT.email}</a>
             </p>
           </div>

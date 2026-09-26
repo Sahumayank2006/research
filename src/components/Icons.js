@@ -158,3 +158,40 @@ export function IconMedal(props) {
     </svg>
   );
 }
+
+export function IconUser(props) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="8" r="3.6" />
+      <path d="M5 20.5c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5" />
+    </svg>
+  );
+}
+
+export function IconTicket(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3.5 8.5V6a1.5 1.5 0 0 1 1.5-1.5h14A1.5 1.5 0 0 1 20.5 6v2.5a2.5 2.5 0 0 0 0 5V18a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 18v-4.5a2.5 2.5 0 0 0 0-5Z" />
+      <path d="M14.5 4.5v15" strokeDasharray="1.5 2.2" />
+    </svg>
+  );
+}
+
+/* WhatsApp mark: chat bubble with handset, drawn filled to read at small sizes */
+export function IconWhatsApp(props) {
+  return (
+    <svg viewBox="0 0 24 24" width={20} height={20} aria-hidden="true" {...props}>
+      <path
+        d="M12 2.6a9.4 9.4 0 0 0-8.1 14.1L2.6 21.4l4.8-1.26A9.4 9.4 0 1 0 12 2.6Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.9 7.4c.2-.4.45-.42.75-.42h.52c.18 0 .4 0 .56.42l.72 1.74c.08.2.04.42-.1.6l-.5.62c-.12.14-.2.32-.06.54a6.4 6.4 0 0 0 2.4 2.36c.22.12.4.08.54-.06l.64-.7c.16-.18.38-.22.6-.12l1.66.8c.22.1.34.28.34.5 0 .52-.24 1.14-.66 1.48-.52.42-1.24.6-2 .38-2.7-.82-4.8-2.9-5.62-5.52-.22-.72-.02-1.66.26-2.12Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}

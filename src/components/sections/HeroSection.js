@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Countdown from '@/components/Countdown';
 import { EVENT, PRIZE_POOL, PRIZES, inr } from '@/lib/config';
-import { IconPin, IconCalendar, IconUsers, IconTrophy, IconEye } from '@/components/Icons';
+import { IconPin, IconCalendar, IconUsers, IconTrophy, IconEye, IconTicket } from '@/components/Icons';
 
 export default function HeroSection() {
   const topPrize = PRIZES.podium[0].amount;
@@ -62,7 +62,13 @@ export default function HeroSection() {
           </li>
           <li className="hero__chip">
             <IconUsers width={17} height={17} />
-            Teams of 1–4 · faculty welcome
+            Teams of 1–4 · faculty optional
+          </li>
+          <li className="hero__chip hero__chip--fee">
+            <IconTicket width={17} height={17} />
+            <span>
+              Registration fee is <strong>per team</strong>, not per student
+            </span>
           </li>
         </ul>
 

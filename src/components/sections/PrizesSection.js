@@ -1,39 +1,6 @@
 import Counter from '@/components/Counter';
 import { EVENT, PRIZES, PRIZE_POOL, TEAM_RULE, inr } from '@/lib/config';
-import { IconTrophy, IconMedal, IconUsers } from '@/components/Icons';
-
-/* Four seats: three students and the one optional faculty seat. */
-const SEATS = [
-  { label: 'Student', faculty: false },
-  { label: 'Student', faculty: false },
-  { label: 'Student', faculty: false },
-  { label: 'Faculty', faculty: true },
-];
-
-function Seat({ faculty }) {
-  return (
-    <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-      <circle cx="20" cy="13" r="6.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
-      <path
-        d="M8 34c0-6.6 5.4-11.5 12-11.5S32 27.4 32 34"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-      {faculty && (
-        <path
-          d="M11 9.5 20 5l9 4.5-9 4.5-9-4.5Zm4.5 2.5v3.2c0 1.2 2 2.3 4.5 2.3s4.5-1.1 4.5-2.3V12"
-          fill="currentColor"
-          fillOpacity="0.22"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinejoin="round"
-        />
-      )}
-    </svg>
-  );
-}
+import { IconTrophy, IconMedal, IconUsers, IconCheck } from '@/components/Icons';
 
 export default function PrizesSection() {
   const { podium, consolation } = PRIZES;
@@ -119,25 +86,25 @@ export default function PrizesSection() {
               <IconUsers width={15} height={15} />
               Team composition
             </span>
-            <h3 className="teamrule__title">{TEAM_RULE.headline}</h3>
+            <h3 className="teamrule__title">Your team, your choice.</h3>
             <p className="teamrule__body">
-              {TEAM_RULE.body} Teams can have <strong>1 to {TEAM_RULE.max} members</strong>{' '}
-              in total.
+              Register solo or as a team of up to <strong>{TEAM_RULE.max} members</strong>.
+              One registration fee covers the whole team.
             </p>
           </div>
 
-          <div className="teamrule__seats" role="img" aria-label="A full team: three students and one faculty member, four members in total">
-            <ul className="seats">
-              {SEATS.map((seat, i) => (
-                <li className={`seat ${seat.faculty ? 'seat--faculty' : ''}`} key={i}>
-                  <Seat faculty={seat.faculty} />
-                  <span>{seat.label}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="seats__sum">
-              <span>3 students + 1 faculty</span>
-              <strong>= 4 members max</strong>
+          <div className="teamrule__card">
+            <span className="teamrule__stamp">
+              <IconCheck width={14} height={14} />
+              Faculty is optional
+            </span>
+            <p className="teamrule__big">{TEAM_RULE.headline}.</p>
+            <p className="teamrule__lead">
+              You can form a team of <strong>4 students</strong>. No faculty member is
+              needed.
+            </p>
+            <p className="teamrule__aside">
+              Prefer a faculty guide? One faculty member may join, counted within the 4.
             </p>
           </div>
         </div>

@@ -22,6 +22,7 @@ export const EVENT = {
   startISO: '2026-10-13T09:00:00+05:30',
 
   registerUrl: 'https://amity.edu/EventsPg/gwalior/TRP2026',
+  whatsappUrl: 'https://chat.whatsapp.com/BWyiJcRPYBIFy5xg1FrGbr',
 
   // The official IEEE conference template participants must follow (public/template.pdf)
   templateUrl: '/template.pdf',
@@ -34,13 +35,15 @@ export const MARQUEE = [
   'Registrations Open',
   '13 – 15 October 2026',
   'Amity University Madhya Pradesh, Gwalior',
+  'Registration Fee Is per Team, Not per Person',
   'Amity Students — ₹200 for the Entire Team',
+  'Other Institutions — ₹300 for the Entire Team',
   'Teams of 1 to 4',
   '₹12,500 in Cash Prizes',
-  'Faculty Member Can Join Your Team',
+  'Faculty Not Compulsory — Teams of 4 Students Welcome',
   'IEEE Two-Column Manuscript',
   'Draft. Defend. Publish.',
-  '35–50 Manuscripts Targeted',
+  '100+ Manuscripts Targeted',
   'IEEE MP Section Co-Sponsored',
 ];
 
@@ -56,15 +59,15 @@ export const SPONSOR_LOGOS = [
 // --- Headline numbers ----------------------------------------
 export const STATS = [
   { value: 48, suffix: '', label: 'Hours of Sprint', note: 'Across three days' },
-  { value: 50, prefix: '', suffix: '', label: 'Manuscripts Targeted', note: '35–50 papers generated' },
-  { value: 4, suffix: '', label: 'Members per Team', note: 'One faculty member may join, counted within the 4' },
+  { value: 100, prefix: '', suffix: '+', label: 'Manuscripts Targeted', note: 'Across all six research tracks' },
+  { value: 4, suffix: '', label: 'Members per Team', note: 'Faculty not compulsory · all-student teams welcome' },
   {
     value: 200,
     prefix: '₹',
     suffix: '',
     alt: '₹300',
-    label: 'Registration Fee',
-    note: '₹200 for Amity students · ₹300 for students other than Amity',
+    label: 'Fee per Team',
+    note: 'For the whole team, not per person · ₹200 Amity · ₹300 other institutions',
   },
 ];
 
@@ -320,8 +323,8 @@ export const inr = (n) => `₹${n.toLocaleString('en-IN')}`;
 // --- Team composition -----------------------------------------
 export const TEAM_RULE = {
   max: 4,
-  headline: 'One faculty member can join your team',
-  body: 'Teams may include one faculty member alongside the students. The faculty member is counted within the maximum of four members, not in addition to it.',
+  headline: 'Faculty not compulsory',
+  body: 'You can form a team of up to 4 students, with no faculty member needed. If you would like a faculty guide, one faculty member may join, counted within the 4.',
 };
 
 // --- Registration --------------------------------------------
@@ -485,8 +488,8 @@ export const FAQ = [
     a: 'Teams may consist of 1 to 4 participants. You may also register individually. Interdisciplinary teams — for example, a CSE student paired with an electronics or biotech student — are encouraged.',
   },
   {
-    q: 'Can a faculty member be part of our team?',
-    a: 'Yes. One faculty member can be included in a team. The faculty member is counted within the four-member limit, so a team with a faculty member can have at most three students.',
+    q: 'Do we need a faculty member in our team?',
+    a: 'No, faculty is not compulsory. You can form a team of up to 4 students. If you would like a faculty guide, one faculty member may join, and they are counted within the four-member limit.',
   },
   {
     q: 'What are the prizes?',

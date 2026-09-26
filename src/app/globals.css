@@ -888,7 +888,7 @@ p {
   flex-shrink: 0;
   align-items: center;
   gap: 0;
-  animation: ticker-run 48s linear infinite;
+  animation: ticker-run 110s linear infinite;
   will-change: transform;
 }
 

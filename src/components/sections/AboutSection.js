@@ -11,12 +11,12 @@ const MARKS = [
   {
     icon: IconUsers,
     label: 'Teams',
-    body: 'One to four members per team. One faculty member may join a team and is counted within the four. Interdisciplinary teams are actively encouraged.',
+    body: 'One to four members per team. Faculty is not compulsory, so a team of 4 students is perfectly fine. Interdisciplinary teams are actively encouraged.',
   },
   {
     icon: IconDoc,
     label: 'Output',
-    body: 'Every registered team aims to leave with a complete, submission-ready research paper. The event targets 35 to 50 manuscripts generated overall.',
+    body: 'Every registered team aims to leave with a complete, submission-ready research paper. The event targets more than 100 manuscripts overall.',
   },
   {
     icon: IconShield,

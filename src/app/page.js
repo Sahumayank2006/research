@@ -3,6 +3,7 @@ import Ticker from '@/components/Ticker';
 import Reveal from '@/components/Reveal';
 import BackToTop from '@/components/BackToTop';
 import SupportButton from '@/components/SupportButton';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import Footer from '@/components/Footer';
 
 import HeroSection from '@/components/sections/HeroSection';
@@ -50,6 +51,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <WhatsAppButton />
       <SupportButton />
       <BackToTop />
       <Reveal />

@@ -311,6 +311,16 @@
   color: var(--gold-bright);
 }
 
+.hero__chip--fee {
+  background: rgba(232, 200, 124, 0.16);
+  border-color: rgba(232, 200, 124, 0.5);
+}
+
+.hero__chip--fee strong {
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
 /* -- prize highlight -- */
 .hero__prize {
   display: inline-flex;
@@ -936,61 +946,58 @@
   color: var(--ink);
 }
 
-.teamrule__seats {
-  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+.teamrule__card {
+  position: relative;
+  padding: clamp(1.35rem, 3vw, 1.85rem);
   border-radius: 16px;
-  background: linear-gradient(160deg, #fff, var(--paper-2));
-  border: 1px solid var(--rule-soft);
+  background: linear-gradient(155deg, #fffaf0 0%, #f6ead0 100%);
+  border: 1px solid rgba(184, 134, 43, 0.4);
+  box-shadow: 0 14px 34px rgba(184, 134, 43, 0.16);
 }
 
-.seats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.5rem;
-}
-
-.seat {
-  display: grid;
-  justify-items: center;
-  gap: 0.35rem;
-  padding: 0.75rem 0.25rem 0.6rem;
-  border-radius: 12px;
-  background: #fff;
-  border: 1px solid var(--rule);
-  color: var(--ink-3);
+.teamrule__stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.75rem;
+  border-radius: 999px;
+  background: #1f7a4c;
+  color: #fff;
   font-family: var(--f-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.14em;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.seat svg {
-  width: clamp(30px, 6vw, 40px);
-  height: auto;
-}
-
-.seat--faculty {
-  background: linear-gradient(160deg, #fff8e6, #f3e2b6);
-  border-color: rgba(184, 134, 43, 0.6);
-  color: #7a5412;
-  box-shadow: 0 8px 22px rgba(184, 134, 43, 0.22);
-}
-
-.seats__sum {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.25rem 0.5rem;
-  margin-top: 0.9rem;
-  font-size: 0.875rem;
-  color: var(--fg-soft);
-}
-
-.seats__sum strong {
+.teamrule__big {
+  margin-top: 0.85rem;
   font-family: var(--f-display);
-  font-size: 1.05rem;
+  font-size: clamp(1.45rem, 1.15rem + 1.2vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--ink);
+}
+
+.teamrule__lead {
+  margin-top: 0.55rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--fg);
+}
+
+.teamrule__lead strong {
+  color: #7a5412;
+}
+
+.teamrule__aside {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed rgba(184, 134, 43, 0.45);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--fg-soft);
 }
 
 .prizes__cta {
@@ -1068,10 +1075,6 @@
 @media (max-width: 420px) {
   .consol__list {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .seat {
-    font-size: 0.5rem;
-    letter-spacing: 0.08em;
   }
 }
 
@@ -3874,6 +3877,13 @@
   }
 }
 
+.reg-sizes__note {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--on-ink-soft);
+}
+
 /* ── Fee amount row with "per team" badge ─────────────────── */
 .fee__amount-wrap {
   display: flex;
@@ -4675,22 +4685,184 @@
   color: var(--gold-bright);
 }
 
-/* back-to-top sits just above the support button */
+/* ---- WhatsApp: stacked directly above the email button ---- */
+.wa {
+  --orb: 60px;
+  --edge: clamp(1rem, 3vw, 2rem);
+  position: fixed;
+  right: var(--edge);
+  bottom: calc(var(--edge) + var(--orb) + 0.85rem);
+  z-index: 820;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: support-in 0.7s var(--ease) 1.2s both;
+}
+
+.wa__orb {
+  display: grid;
+  place-items: center;
+  width: var(--orb);
+  height: var(--orb);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #5ef08e 0%, #25d366 45%, #128c4a 100%);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(18, 140, 74, 0.45), inset 0 2px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.wa:hover .wa__orb,
+.wa:focus-visible .wa__orb {
+  transform: scale(1.08) rotate(-8deg);
+  box-shadow: 0 16px 40px rgba(18, 140, 74, 0.6), inset 0 2px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.wa__label {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 14px;
+  background: #0f3d27;
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  box-shadow: var(--lift-3);
+  text-align: right;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(12px);
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.wa:hover .wa__label,
+.wa:focus-visible .wa__label {
+  opacity: 1;
+  transform: none;
+}
+
+.wa__label-title {
+  font-family: var(--f-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.wa__label-sub {
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: #8ff0b4;
+}
+
+/* back-to-top sits above both round buttons */
 .totop {
-  bottom: calc(clamp(1rem, 3vw, 2rem) + 60px + 0.85rem);
+  bottom: calc(clamp(1rem, 3vw, 2rem) + 2 * (60px + 0.85rem));
   right: calc(clamp(1rem, 3vw, 2rem) + 7px);
 }
 
 @media (max-width: 560px) {
-  .support {
+  .support,
+  .wa {
     --orb: 54px;
   }
-  .support__label {
+  .wa {
+    bottom: calc(var(--edge) + 54px + 0.75rem);
+  }
+  .support__label,
+  .wa__label {
     display: none;
   }
   .totop {
-    bottom: calc(clamp(1rem, 3vw, 2rem) + 54px + 0.75rem);
+    bottom: calc(clamp(1rem, 3vw, 2rem) + 2 * (54px + 0.75rem));
     right: calc(clamp(1rem, 3vw, 2rem) + 4px);
+  }
+}
+
+/* WhatsApp button inside the registration panel */
+.btn--whatsapp {
+  --btn-bg: linear-gradient(135deg, #3ee07c 0%, #25d366 50%, #159a52 100%);
+  --btn-fg: #fff;
+  margin-top: 0.75rem;
+  box-shadow: 0 10px 28px rgba(18, 140, 74, 0.28);
+}
+
+.btn--whatsapp:hover {
+  box-shadow: 0 14px 36px rgba(18, 140, 74, 0.4);
+}
+
+/* WhatsApp band in the contact section */
+.wa-band {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.5vw, 1.5rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1.1rem, 3vw, 1.75rem);
+  border-radius: 18px;
+  background: linear-gradient(120deg, rgba(37, 211, 102, 0.16), rgba(37, 211, 102, 0.04));
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease);
+}
+
+.wa-band:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 211, 102, 0.75);
+  background: linear-gradient(120deg, rgba(37, 211, 102, 0.24), rgba(37, 211, 102, 0.06));
+}
+
+.wa-band__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #5ef08e, #25d366 45%, #128c4a);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(18, 140, 74, 0.4);
+}
+
+.wa-band__text {
+  display: grid;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.wa-band__text strong {
+  font-family: var(--f-display);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  font-weight: 600;
+  color: var(--on-ink);
+}
+
+.wa-band__text span {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--on-ink-soft);
+}
+
+.wa-band__cta {
+  flex-shrink: 0;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: #06331b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .wa-band {
+    flex-wrap: wrap;
+  }
+  .wa-band__cta {
+    width: 100%;
+    text-align: center;
   }
 }
 

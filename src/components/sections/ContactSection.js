@@ -1,5 +1,5 @@
 import { EVENT, VENUE } from '@/lib/config';
-import { IconMail, IconPin, IconCalendar } from '@/components/Icons';
+import { IconMail, IconPin, IconCalendar, IconWhatsApp } from '@/components/Icons';
 
 export default function ContactSection() {
   return (
@@ -48,6 +48,25 @@ export default function ContactSection() {
             <span className="ccard__note">Three days · 48 hours of sprint</span>
           </li>
         </ul>
+
+        <a
+          className="wa-band"
+          href={EVENT.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-reveal
+        >
+          <span className="wa-band__icon" aria-hidden="true">
+            <IconWhatsApp width={30} height={30} />
+          </span>
+          <span className="wa-band__text">
+            <strong>Join the official WhatsApp group</strong>
+            <span>Announcements, schedule changes and quick answers, straight to your phone.</span>
+          </span>
+          <span className="wa-band__cta">
+            Join Group <span aria-hidden="true">→</span>
+          </span>
+        </a>
 
         <div className="contact__cta" data-reveal>
           <p className="contact__cta-text">
