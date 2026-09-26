@@ -2,6 +2,7 @@ import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import './sections.css';
 import { EVENT } from '@/lib/config';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const display = Fraunces({
   variable: '--font-display',
@@ -68,7 +69,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
