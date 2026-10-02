@@ -4,7 +4,9 @@ import Reveal from '@/components/Reveal';
 import BackToTop from '@/components/BackToTop';
 import SupportButton from '@/components/SupportButton';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import CallButton from '@/components/CallButton';
 import Footer from '@/components/Footer';
+import RightsNotice from '@/components/RightsNotice';
 
 import HeroSection from '@/components/sections/HeroSection';
 import PrizesSection from '@/components/sections/PrizesSection';
@@ -52,9 +54,11 @@ export default function Home() {
 
       <Footer />
       <WhatsAppButton />
+      <CallButton />
       <SupportButton />
       <BackToTop />
       <Reveal />
+      <RightsNotice />
     </>
   );
 }

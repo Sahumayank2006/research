@@ -28,6 +28,8 @@ export const EVENT = {
   templateUrl: '/template.pdf',
 
   email: 'dsharma@gwa.amity.edu',
+  phone: '+917905027329',
+  phoneLabel: '+91 79050 27329',
 };
 
 // --- Marquee ticker items (below the navbar) ------------------
@@ -59,7 +61,7 @@ export const SPONSOR_LOGOS = [
 // --- Headline numbers ----------------------------------------
 export const STATS = [
   { value: 48, suffix: '', label: 'Hours of Sprint', note: 'Across three days' },
-  { value: 100, prefix: '', suffix: '+', label: 'Manuscripts Targeted', note: 'Across all six research tracks' },
+  { value: 100, prefix: '', suffix: '+', label: 'Manuscripts Targeted', note: 'Across all seven research tracks' },
   { value: 4, suffix: '', label: 'Members per Team', note: 'Faculty not compulsory · all-student teams welcome' },
   {
     value: 200,
@@ -167,6 +169,16 @@ export const TRACKS = [
       'Study design, systematic literature review, citation practice, reproducibility, and academic integrity.',
     tags: ['Study Design', 'Systematic Review', 'Citation Practice', 'Reproducibility', 'Integrity'],
     output: 'A survey or methodology paper with a literature map that holds up.',
+  },
+  {
+    n: '07',
+    motif: 'open',
+    name: 'Open Innovation — Any Idea, Any Domain',
+    short: 'Open Innovation',
+    scope:
+      'The catch-all track for work that does not sit neatly in the six above. Bring a tech project, a startup or business idea, a social innovation, a design concept, or a cross-domain build — if you can defend it, you can write it up.',
+    tags: ['Tech Projects', 'Business Ideas', 'Startups', 'Social Innovation', 'Any Domain'],
+    output: 'A paper built around your own idea, in IEEE format, with no domain gatekeeping.',
   },
 ];
 
@@ -452,10 +464,31 @@ export const COMMITTEE = {
       members: ['Dr. Ashok Shrivastava', 'Dr. Kapil Sharma', 'Mr. Rohit Singh Thakur'],
     },
     {
-      title: 'Student Organizing Team',
+      // Sits beside the Discipline Committee, filling the last cell of the grid.
+      // A member may be a plain name or { name, meta } when there is a post or
+      // enrolment number to show alongside it.
+      title: 'IEEE Student Branch',
+      subtitle: 'Office Bearers — ASET',
+      members: [
+        { name: 'Padmini Umorya', meta: 'Vice Chair · 101319780' },
+        { name: 'Kiran Tomar', meta: 'Treasurer · 101314066' },
+      ],
+    },
+    {
+      // `feature` scales the card's typography up — the background and frame
+      // stay exactly as every other committee card.
+      title: 'Student Coordinators',
       subtitle: 'Department of CSE — ASET',
-      note: 'IEEE Student Chapter Members, ASET, Amity University Madhya Pradesh',
-      members: ['Mayank Sahu', 'Jyotima Tomar', 'Vaibhav', 'Anshul Gole'],
+      feature: true,
+      blurb:
+        'Your first point of contact through all three days — registration desk, team formation, submissions, and anything that goes sideways at 2 a.m.',
+      members: [
+        { name: 'Mayank Sahu', meta: 'Department of CSE' },
+        { name: 'Jyotima Tomar', meta: 'Department of CSE' },
+        { name: 'Vaibhav', meta: 'Department of CSE' },
+        { name: 'Anshul Gole', meta: 'Department of CSE' },
+        { name: 'Kumari Kajol', meta: 'Department of CSE' },
+      ],
     },
   ],
 };

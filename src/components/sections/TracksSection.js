@@ -51,6 +51,15 @@ function TrackDetail({ track, compact = false }) {
 export default function TracksSection() {
   const [active, setActive] = useState(0);
   const track = TRACKS[active];
+  const openIndex = TRACKS.findIndex((t) => t.motif === 'open');
+
+  /* Jump the index to the open track and bring it into view */
+  const showOpenTrack = () => {
+    setActive(openIndex);
+    const tab = document.getElementById(`track-tab-${openIndex}`);
+    tab?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    tab?.focus({ preventScroll: true });
+  };
 
   /* Arrow-key navigation across the index */
   const onKeyDown = (e) => {
@@ -73,11 +82,32 @@ export default function TracksSection() {
             </h2>
           </div>
           <p className="lede" data-reveal style={{ '--reveal-delay': '120ms' }}>
-            Six tracks, mapped to where engineering research is actually being
-            published right now. Choose one at registration — the exact problem
-            statement gets sharpened with your mentor on Day&nbsp;1.
+            Seven tracks, mapped to where engineering research is actually being
+            published right now — plus an open track for everything else. Choose
+            one at registration; the exact problem statement gets sharpened with
+            your mentor on Day&nbsp;1.
           </p>
         </div>
+
+        {/* Clears up the single most common question at registration */}
+        <aside className="tnote" data-reveal style={{ '--reveal-delay': '180ms' }}>
+          <span className="tnote__mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9.5 17.5h5M10 20.5h4" />
+              <path d="M12 3a6 6 0 0 1 3.6 10.8c-.6.45-.95 1.05-.95 1.7H9.35c0-.65-.35-1.25-.95-1.7A6 6 0 0 1 12 3Z" />
+            </svg>
+          </span>
+          <p className="tnote__text">
+            <strong>No idea is out of scope.</strong> Your paper title can be your
+            tech project, your business or startup idea, a hardware build, a social
+            initiative — anything you are already working on. Pick the track it is
+            closest to, or choose{' '}
+            <button type="button" className="tnote__jump" onClick={showOpenTrack}>
+              Open Innovation
+            </button>{' '}
+            and bring whatever you have.
+          </p>
+        </aside>
 
         <div className="tsel" data-reveal>
           {/* ---------- index ---------- */}

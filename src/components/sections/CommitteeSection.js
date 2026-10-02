@@ -9,6 +9,17 @@ function initials(name) {
     .join('');
 }
 
+/* Sets the last word of a title in the display italic, as an accent. */
+function AccentedTitle({ title }) {
+  const words = title.split(' ');
+  const last = words.pop();
+  return (
+    <>
+      {words.join(' ')} <em>{last}</em>
+    </>
+  );
+}
+
 function Patron({ person, chief = false }) {
   return (
     <article className={`patron ${chief ? 'patron--chief' : ''}`}>
@@ -39,9 +50,6 @@ export default function CommitteeSection() {
     (p) => p.role !== 'Event Organizing Chair'
   );
 
-  // Separate student organizing team from other groups
-  const facultyGroups = COMMITTEE.groups.filter((g) => !g.note);
-  const studentGroup = COMMITTEE.groups.find((g) => g.note);
 
   return (
     <section className="band band--tint committee" id="committee">
@@ -142,18 +150,24 @@ export default function CommitteeSection() {
           )}
         </div>
 
-        {/* ---- faculty committees ---- */}
+        {/* ---- committees ---- */}
         <div className="cgroups">
-          {facultyGroups.map((group, i) => (
+          {COMMITTEE.groups.map((group, i) => (
             <section
-              className="cgroup"
+              className={`cgroup ${group.feature ? 'cgroup--feature' : ''}`}
               key={group.title}
               data-reveal
               style={{ '--reveal-delay': `${(i % 3) * 90}ms` }}
             >
               <header className="cgroup__head">
                 <div>
-                  <h3 className="cgroup__title">{group.title}</h3>
+                  <h3 className="cgroup__title">
+                    {group.feature ? (
+                      <AccentedTitle title={group.title} />
+                    ) : (
+                      group.title
+                    )}
+                  </h3>
                   {group.subtitle && (
                     <p className="cgroup__subtitle">{group.subtitle}</p>
                   )}
@@ -163,52 +177,26 @@ export default function CommitteeSection() {
                 </span>
               </header>
 
+              {group.note && <p className="cgroup__note">{group.note}</p>}
+              {group.blurb && <p className="cgroup__blurb">{group.blurb}</p>}
+
               <ul className="cgroup__list">
-                {group.members.map((member) => (
-                  <li className="cgroup__member" key={member}>
-                    {member}
-                  </li>
-                ))}
+                {group.members.map((member) => {
+                  // a member is either a plain name or { name, meta }
+                  const name = member.name ?? member;
+                  return (
+                    <li className="cgroup__member" key={name}>
+                      <span>{name}</span>
+                      {member.meta && (
+                        <span className="cgroup__meta">{member.meta}</span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ))}
         </div>
-
-        {/* ---- Student Organizing Team (table format) ---- */}
-        {studentGroup && (
-          <div
-            className="cgroups cgroups--student"
-            style={{ marginTop: 'clamp(1.5rem, 3vw, 2.5rem)' }}
-            data-reveal
-          >
-            <section className="cgroup cgroup--student" style={{ gridColumn: '1 / -1' }}>
-              <header className="cgroup__head">
-                <div>
-                  <h3 className="cgroup__title">{studentGroup.title}</h3>
-                  {studentGroup.subtitle && (
-                    <p className="cgroup__subtitle">{studentGroup.subtitle}</p>
-                  )}
-                </div>
-                <span className="cgroup__count">
-                  {String(studentGroup.members.length).padStart(2, '0')}
-                </span>
-              </header>
-
-              {studentGroup.note && (
-                <p className="cgroup__note">{studentGroup.note}</p>
-              )}
-
-              <ul className="cgroup__list">
-                {studentGroup.members.map((member) => (
-                  <li className="cgroup__member" key={member}>
-                    <span>{member}</span>
-                    <span className="cgroup__dept">Department of CSE</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
-        )}
       </div>
     </section>
   );

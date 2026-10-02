@@ -176,6 +176,54 @@ function Method() {
   );
 }
 
+/* 07 — open innovation: a filament that radiates in every direction */
+function Open() {
+  const rays = [0, 40, 80, 120, 160, 200, 240, 280, 320];
+  return (
+    <svg {...frame}>
+      <g opacity="0.45">
+        {rays.map((deg, i) => (
+          <line
+            key={deg}
+            data-draw
+            x1="60"
+            y1="23"
+            x2="60"
+            y2="9"
+            transform={`rotate(${deg} 60 52)`}
+            {...S}
+            strokeWidth={0.65}
+            strokeDasharray={i % 2 ? '2 3' : undefined}
+          />
+        ))}
+      </g>
+
+      {/* bulb */}
+      <path
+        data-draw
+        d="M48 72c0-8-11-12-11-23a23 23 0 0 1 46 0c0 11-11 15-11 23Z"
+        {...S}
+        strokeWidth={1.3}
+      />
+      {/* filament */}
+      <path data-draw d="M53 60c0-7 3-10 7-10s7 3 7 10" {...S} strokeWidth={0.8} opacity="0.7" />
+      <path data-draw d="M56 44c2 3 6 3 8 0" {...S} strokeWidth={0.7} opacity="0.55" />
+      {/* screw base */}
+      <g {...S} strokeWidth={1.1}>
+        <line data-draw x1="50" y1="78" x2="70" y2="78" />
+        <line data-draw x1="51" y1="86" x2="69" y2="86" />
+        <line data-draw x1="55" y1="94" x2="65" y2="94" />
+      </g>
+
+      <g opacity="0.8">
+        <circle data-pop cx="60" cy="5" r="2.1" fill="currentColor" stroke="none" />
+        <circle data-pop cx="104" cy="46" r="2.1" fill="currentColor" stroke="none" />
+        <circle data-pop cx="16" cy="46" r="2.1" fill="currentColor" stroke="none" />
+      </g>
+    </svg>
+  );
+}
+
 const MOTIFS = {
   neural: Neural,
   data: Data,
@@ -183,6 +231,7 @@ const MOTIFS = {
   iot: Iot,
   sustain: Sustain,
   method: Method,
+  open: Open,
 };
 
 export default function TrackMotif({ name }) {
